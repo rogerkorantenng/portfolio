@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
   Send,
   Github,
@@ -52,6 +53,7 @@ const socialLinks = [
 ];
 
 export default function ConnectPage() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -61,6 +63,7 @@ export default function ConnectPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -95,18 +98,36 @@ export default function ConnectPage() {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Send email using EmailJS
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: "Roger",
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      setIsSubmitting(false);
+      setIsSuccess(true);
 
-    // Reset after showing success
-    setTimeout(() => {
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setIsSuccess(false);
-    }, 3000);
+      // Reset after showing success
+      setTimeout(() => {
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setIsSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      setIsSubmitting(false);
+      setSubmitError("TRANSMISSION_FAILED: Unable to send message. Please try again.");
+    }
   };
 
   const handleChange = (
@@ -164,7 +185,7 @@ export default function ConnectPage() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-5 space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="p-5 space-y-4">
               {/* Name Field */}
               <div>
                 <label className="block text-xs font-mono text-[#ff00ff] mb-2">
@@ -268,6 +289,14 @@ export default function ConnectPage() {
                   </p>
                 )}
               </div>
+
+              {/* Error Message */}
+              {submitError && (
+                <div className="p-3 border border-red-500/50 bg-red-500/10 text-red-500 font-mono text-xs flex items-center gap-2">
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                  {submitError}
+                </div>
+              )}
 
               {/* Submit Button */}
               <button
