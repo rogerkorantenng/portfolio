@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Scanlines } from "@/components/scanlines";
 import { profile } from "@/data/profile";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: `${profile.name} | ${profile.title}`,
+    default: `${profile.name} | SYSTEM_OPERATIVE`,
     template: `%s | ${profile.name}`,
   },
   description: profile.summary,
@@ -30,6 +27,8 @@ export const metadata: Metadata = {
     "Python",
     "AWS",
     "Ghana",
+    "Cyberpunk",
+    "Hacker",
   ],
   authors: [{ name: profile.name }],
   creator: profile.name,
@@ -37,12 +36,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: profile.name,
-    title: `${profile.name} | ${profile.title}`,
+    title: `${profile.name} | SYSTEM_OPERATIVE`,
     description: profile.summary,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} | ${profile.title}`,
+    title: `${profile.name} | SYSTEM_OPERATIVE`,
     description: profile.summary,
   },
   robots: {
@@ -58,9 +57,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${jetbrainsMono.variable} antialiased`}>
+        <Scanlines />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
