@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Roger Obeng Koranteng - Portfolio
+
+A modern, responsive portfolio website built with Next.js 16, TypeScript, and Tailwind CSS.
+
+## Features
+
+- **Modern Design**: Clean, minimal, and professional UI
+- **Fully Responsive**: Optimized for all screen sizes
+- **Data-Driven**: All content is managed through TypeScript data files
+- **Fast Performance**: Built with Next.js App Router and optimized for speed
+- **SEO Ready**: Proper metadata, OpenGraph, and semantic HTML
+- **Animations**: Subtle Framer Motion animations for enhanced UX
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom shadcn/ui-style components
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── about/             # About page
+│   ├── blog/              # Publications & blog page
+│   ├── contact/           # Contact page with form
+│   ├── experience/        # Work experience timeline
+│   ├── projects/          # Projects with filters
+│   ├── layout.tsx         # Root layout with navbar/footer
+│   ├── page.tsx           # Home page
+│   └── globals.css        # Global styles
+├── components/            # Reusable components
+│   ├── layout/           # Navbar, Footer
+│   ├── ui/               # Base UI components (Button, Card, etc.)
+│   └── *.tsx             # Feature components
+├── data/                  # Content data files (edit these!)
+│   ├── profile.ts        # Personal info & highlights
+│   ├── experience.ts     # Work history
+│   ├── projects.ts       # Project portfolio
+│   ├── skills.ts         # Skills by category
+│   ├── education.ts      # Education history
+│   ├── certifications.ts # Professional certifications
+│   ├── publications.ts   # Books & blog info
+│   └── awards.ts         # Awards & recognition
+└── lib/
+    └── utils.ts          # Utility functions
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm (or yarn/pnpm)
+
+### Installation
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Updating Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All content is stored in `/src/data/` directory. Edit these TypeScript files to update your portfolio:
 
-## Learn More
+- **profile.ts**: Name, title, contact info, summary, highlights
+- **experience.ts**: Work history with roles and achievements
+- **projects.ts**: Project portfolio with descriptions and tech stacks
+- **skills.ts**: Skills organized by category
+- **education.ts**: Educational background
+- **certifications.ts**: Professional certifications
+- **publications.ts**: Books, blogs, articles
+- **awards.ts**: Awards and recognition
 
-To learn more about Next.js, take a look at the following resources:
+### Updating CV
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Replace the PDF file at `/public/Software_Engineer.pdf` with your updated CV. The "Download CV" button links to this file.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+### Vercel (Recommended)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push your code to GitHub
+2. Import the repository to [Vercel](https://vercel.com)
+3. Vercel will automatically detect Next.js and deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Other Platforms
+
+Build the static export:
+```bash
+npm run build
+```
+
+The built files will be in the `.next` directory.
+
+## Pages
+
+- **/** - Home page with hero, stats, featured projects, and experience
+- **/about** - Detailed about section, skills, education, certifications, awards
+- **/experience** - Work history in timeline format
+- **/projects** - Project portfolio with category filters
+- **/blog** - Publications and technical writing
+- **/contact** - Contact form and social links
+
+## License
+
+This project is for personal use. Feel free to use it as a template for your own portfolio.
+
+---
+
+Built with Next.js by Roger Obeng Koranteng
