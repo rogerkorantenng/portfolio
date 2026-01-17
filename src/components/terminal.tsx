@@ -36,6 +36,7 @@ const COMMANDS: Record<string, Command> = {
         "║  access    - View system access logs             ║",
         "║  trophies  - Show unlocked achievements          ║",
         "║  connect   - Establish secure connection         ║",
+        "║  progress  - Show exploration progress           ║",
         "║  clear     - Clear terminal                      ║",
         "║  whoami    - Display operative info              ║",
         "║  matrix    - ████████████████                    ║",
@@ -162,6 +163,58 @@ const COMMANDS: Record<string, Command> = {
         "  cloud:x:1003:1003:AWS, Azure, GCP:/home/cloud:/bin/deploy",
         "",
         "  > Real credentials? Run 'connect' instead ;)",
+        "",
+      ],
+    }),
+  },
+  progress: {
+    description: "Show exploration progress",
+    action: () => {
+      // Get progress from localStorage (client-side only)
+      let visitedCount = 0;
+      let achievements: string[] = [];
+      if (typeof window !== "undefined") {
+        const visited = localStorage.getItem("visitedPages");
+        visitedCount = visited ? JSON.parse(visited).length : 0;
+        const unlocked = localStorage.getItem("unlockedAchievements");
+        achievements = unlocked ? JSON.parse(unlocked) : [];
+      }
+      const totalPages = 6;
+      const progress = Math.round((visitedCount / totalPages) * 100);
+      const filled = Math.floor(progress / 10);
+      const empty = 10 - filled;
+
+      return {
+        output: [
+          "",
+          "  ╔═══════════════════════════════════════╗",
+          "  ║       EXPLORATION PROGRESS            ║",
+          "  ╠═══════════════════════════════════════╣",
+          `  ║  AREAS EXPLORED: ${visitedCount}/${totalPages}                  ║`,
+          `  ║  [${"█".repeat(filled)}${"░".repeat(empty)}] ${progress}%          ║`,
+          "  ╠═══════════════════════════════════════╣",
+          "  ║  ACHIEVEMENTS UNLOCKED:               ║",
+          ...(achievements.length > 0
+            ? achievements.map(a => `  ║  ✓ ${a.toUpperCase().padEnd(32)}║`)
+            : ["  ║  (none yet - keep exploring!)        ║"]),
+          "  ╚═══════════════════════════════════════╝",
+          "",
+          "  > Explore all pages to unlock achievements!",
+          "",
+        ],
+      };
+    },
+  },
+  secret: {
+    description: "Hidden command",
+    action: () => ({
+      output: [
+        "",
+        "  🔓 SECRET COMMAND DISCOVERED!",
+        "",
+        "  You found a hidden command.",
+        "  Here's a hint: Try pressing ↑↑↓↓",
+        "  on your keyboard anywhere on the site...",
         "",
       ],
     }),
@@ -312,6 +365,16 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
     }
   }, [currentInput, commandHistory, historyIndex, executeCommand]);
 
+  // Quick commands for mobile
+  const quickCommands = [
+    { cmd: "help", label: "HELP", color: "#00ffff" },
+    { cmd: "skills", label: "SKILLS", color: "#39ff14" },
+    { cmd: "missions", label: "MISSIONS", color: "#ff00ff" },
+    { cmd: "stats", label: "STATS", color: "#ffff00" },
+    { cmd: "connect", label: "CONNECT", color: "#00ffff" },
+    { cmd: "whoami", label: "WHOAMI", color: "#ff00ff" },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -339,7 +402,7 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
         <div
           ref={terminalRef}
           onClick={handleTerminalClick}
-          className="h-80 overflow-y-auto p-4 cursor-text"
+          className="h-64 sm:h-80 overflow-y-auto p-4 cursor-text"
         >
           <AnimatePresence>
             {history.map((entry, index) => (
@@ -347,7 +410,7 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`whitespace-pre-wrap ${
+                className={`whitespace-pre-wrap text-xs sm:text-sm ${
                   entry.type === "input"
                     ? "text-[#00ffff]"
                     : "text-[#39ff14]"
@@ -368,7 +431,7 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
                 value={currentInput}
                 onChange={(e) => setCurrentInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent text-[#00ffff] outline-none caret-[#39ff14]"
+                className="flex-1 bg-transparent text-[#00ffff] outline-none caret-[#39ff14] text-sm"
                 autoFocus
                 spellCheck={false}
                 autoComplete="off"
@@ -377,6 +440,32 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
             </div>
           )}
         </div>
+
+        {/* Mobile Quick Commands */}
+        {!isBooting && (
+          <div className="border-t border-[#00ffff]/20 p-2 sm:hidden">
+            <div className="text-[10px] text-zinc-500 mb-2 px-1">QUICK_COMMANDS:</div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {quickCommands.map(({ cmd, label, color }) => (
+                <button
+                  key={cmd}
+                  onClick={() => {
+                    executeCommand(cmd);
+                    setCurrentInput("");
+                  }}
+                  className="px-2 py-1.5 text-[10px] font-mono border transition-all active:scale-95"
+                  style={{
+                    borderColor: `${color}40`,
+                    color: color,
+                    backgroundColor: `${color}10`,
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </motion.div>
   );

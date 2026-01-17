@@ -3,6 +3,10 @@ import { JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Scanlines } from "@/components/scanlines";
+import { MatrixRain } from "@/components/matrix-rain";
+import { KonamiCode } from "@/components/konami-code";
+import { XPNotification } from "@/components/xp-notification";
+import { GamificationTracker } from "@/components/gamification-tracker";
 import { profile } from "@/data/profile";
 import "./globals.css";
 
@@ -58,12 +62,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${jetbrainsMono.variable} antialiased`}>
+        <MatrixRain opacity={0.03} speed={0.8} />
         <Scanlines />
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <XPNotification />
+        <GamificationTracker />
+        <KonamiCode>
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </KonamiCode>
       </body>
     </html>
   );

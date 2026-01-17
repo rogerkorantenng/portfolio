@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Github, Linkedin, Mail, Globe, Terminal } from "lucide-react";
 import { profile } from "@/data/profile";
+import { VisitorCounter } from "@/components/visitor-counter";
 
 const socialLinks = [
   {
@@ -153,8 +154,15 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Visitor Counter */}
+        <div className="mt-8 flex justify-center border-t border-[#00ffff]/10 pt-6">
+          <div className="border border-[#00ffff]/20 bg-black/50 px-6 py-3">
+            <VisitorCounter />
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#00ffff]/10 pt-8 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 border-t border-[#00ffff]/10 pt-6 sm:flex-row">
           <p className="text-xs font-mono text-zinc-600">
             <span className="text-[#00ffff]/50">[{currentYear}]</span>{" "}
             {profile.name} <span className="text-[#ff00ff]">//</span> ALL_RIGHTS_RESERVED

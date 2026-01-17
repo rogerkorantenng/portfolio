@@ -22,13 +22,20 @@ function StatBar({ label, value, maxValue = 100, color = "cyan" }: StatBarProps)
   };
 
   return (
-    <div className="flex items-center gap-2 font-mono text-sm">
-      <span className="text-zinc-500 w-24 truncate">{label}</span>
-      <span className={colorClasses[color]}>
+    <div className="flex items-center gap-2 font-mono text-xs sm:text-sm">
+      <span className="text-zinc-500 w-20 sm:w-24 truncate">{label}</span>
+      <span className={`${colorClasses[color]} hidden sm:inline`}>
         {"█".repeat(filledBlocks)}
         <span className="opacity-30">{"░".repeat(emptyBlocks)}</span>
       </span>
-      <span className="text-zinc-600 w-12 text-right">{value}%</span>
+      {/* Mobile progress bar */}
+      <div className="flex-1 sm:hidden h-2 bg-zinc-800 overflow-hidden">
+        <div
+          className={`h-full ${color === "cyan" ? "bg-[#00ffff]" : color === "pink" ? "bg-[#ff00ff]" : "bg-[#39ff14]"}`}
+          style={{ width: `${percentage}%` }}
+        />
+      </div>
+      <span className="text-zinc-600 w-10 sm:w-12 text-right">{value}%</span>
     </div>
   );
 }
@@ -93,20 +100,21 @@ export function StatsPanel({ className, compact = false }: StatsPanelProps) {
 
         {/* Content */}
         <div className="p-4 space-y-4">
-          {/* ASCII Border Top */}
-          <pre className="text-[#00ffff]/40 text-[10px] leading-none">
+          {/* ASCII Border Top - Hidden on mobile */}
+          <pre className="text-[#00ffff]/40 text-[10px] leading-none hidden sm:block">
 {`╔══════════════════════════════════════╗`}
           </pre>
+          <div className="sm:hidden border-t border-[#00ffff]/30" />
 
           {/* Profile Info */}
-          <div className="space-y-1 px-1">
-            <div className="flex justify-between">
-              <span className="text-zinc-500">OPERATIVE:</span>
-              <span className="text-[#00ffff]">{profile.name.split(" ")[0]} Koranteng</span>
+          <div className="space-y-1 px-1 text-xs sm:text-sm">
+            <div className="flex justify-between gap-2">
+              <span className="text-zinc-500 shrink-0">OPERATIVE:</span>
+              <span className="text-[#00ffff] truncate">{profile.name.split(" ")[0]} Koranteng</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-500">CLASS:</span>
-              <span className="text-[#ff00ff]">{profile.title}</span>
+            <div className="flex justify-between gap-2">
+              <span className="text-zinc-500 shrink-0">CLASS:</span>
+              <span className="text-[#ff00ff] truncate">{profile.title}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-zinc-500">LEVEL:</span>
@@ -137,10 +145,11 @@ export function StatsPanel({ className, compact = false }: StatsPanelProps) {
             </div>
           </div>
 
-          {/* Divider */}
-          <pre className="text-[#00ffff]/40 text-[10px] leading-none">
+          {/* Divider - Hidden on mobile */}
+          <pre className="text-[#00ffff]/40 text-[10px] leading-none hidden sm:block">
 {`╠══════════════════════════════════════╣`}
           </pre>
+          <div className="sm:hidden border-t border-[#00ffff]/30" />
 
           {/* Stats Section */}
           <div className="space-y-2 px-1">
@@ -161,10 +170,11 @@ export function StatsPanel({ className, compact = false }: StatsPanelProps) {
             </div>
           </div>
 
-          {/* ASCII Border Bottom */}
-          <pre className="text-[#00ffff]/40 text-[10px] leading-none">
+          {/* ASCII Border Bottom - Hidden on mobile */}
+          <pre className="text-[#00ffff]/40 text-[10px] leading-none hidden sm:block">
 {`╚══════════════════════════════════════╝`}
           </pre>
+          <div className="sm:hidden border-t border-[#00ffff]/30" />
         </div>
       </div>
     </motion.div>
