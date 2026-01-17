@@ -402,7 +402,7 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
         <div
           ref={terminalRef}
           onClick={handleTerminalClick}
-          className="h-64 sm:h-80 overflow-y-auto p-4 cursor-text"
+          className="h-64 sm:h-80 overflow-y-auto overflow-x-auto p-3 sm:p-4 cursor-text"
         >
           <AnimatePresence>
             {history.map((entry, index) => (

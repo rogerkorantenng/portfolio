@@ -66,10 +66,10 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[#0a0a0a]" />
         <div className="absolute inset-0 grid-pattern opacity-30" />
 
-        {/* Animated gradient orbs - Cyberpunk colors */}
-        <div className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-[#00ffff]/10 blur-[120px]" />
-        <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-[#ff00ff]/10 blur-[120px]" />
-        <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39ff14]/5 blur-[100px]" />
+        {/* Animated gradient orbs - Cyberpunk colors - contained within viewport */}
+        <div className="absolute left-0 top-1/4 h-64 w-64 sm:h-96 sm:w-96 sm:-left-32 rounded-full bg-[#00ffff]/10 blur-[120px]" />
+        <div className="absolute right-0 bottom-1/4 h-64 w-64 sm:h-96 sm:w-96 sm:-right-32 rounded-full bg-[#ff00ff]/10 blur-[120px]" />
+        <div className="absolute left-1/2 top-1/2 h-48 w-48 sm:h-64 sm:w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39ff14]/5 blur-[100px]" />
 
         <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
           {/* Boot Sequence */}
