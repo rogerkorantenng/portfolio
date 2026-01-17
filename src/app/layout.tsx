@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Scanlines } from "@/components/scanlines";
@@ -10,9 +10,9 @@ import { GamificationTracker } from "@/components/gamification-tracker";
 import { profile } from "@/data/profile";
 import "./globals.css";
 
-const jetbrainsMono = JetBrains_Mono({
+const jetbrainsMono = localFont({
+  src: "../../public/fonts/JetBrainsMono-VariableFont_wght.ttf",
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
   display: "swap",
 });
 
