@@ -9,8 +9,8 @@ export default function NotFound() {
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
       {/* Background Effects */}
       <div className="fixed inset-0 grid-pattern opacity-20 pointer-events-none" />
-      <div className="fixed -left-32 top-1/4 h-96 w-96 rounded-full bg-[#ff0000]/10 blur-[120px] pointer-events-none" />
-      <div className="fixed -right-32 bottom-1/4 h-96 w-96 rounded-full bg-[#ff00ff]/10 blur-[120px] pointer-events-none" />
+      <div className="fixed left-0 sm:-left-32 top-1/4 h-64 w-64 sm:h-96 sm:w-96 rounded-full bg-[#ff0000]/10 blur-[120px] pointer-events-none" />
+      <div className="fixed right-0 sm:-right-32 bottom-1/4 h-64 w-64 sm:h-96 sm:w-96 rounded-full bg-[#ff00ff]/10 blur-[120px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -32,11 +32,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-mono), monospace;
+  overflow-x: hidden;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling and prevent horizontal overflow */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar - Cyberpunk style */
