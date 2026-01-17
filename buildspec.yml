@@ -20,6 +20,9 @@ phases:
 
   post_build:
     commands:
+      - echo Copying static files for standalone build...
+      - cp -r .next/static .next/standalone/.next/static
+      - cp -r public .next/standalone/public || true
       - echo Build completed on `date`
 
 artifacts:
