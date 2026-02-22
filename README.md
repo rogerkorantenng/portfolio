@@ -130,3 +130,4 @@ This project is for personal use. Feel free to use it as a template for your own
 ---
 
 Built with Next.js by Roger Obeng Koranteng
+####
