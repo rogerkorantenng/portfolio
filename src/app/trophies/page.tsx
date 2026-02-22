@@ -116,8 +116,8 @@ export default function TrophiesPage() {
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Background */}
       <div className="fixed inset-0 grid-pattern opacity-30 pointer-events-none" />
-      <div className="fixed -left-32 top-1/4 h-96 w-96 rounded-full bg-[#ffff00]/5 blur-[120px] pointer-events-none" />
-      <div className="fixed -right-32 bottom-1/4 h-96 w-96 rounded-full bg-[#ff00ff]/5 blur-[120px] pointer-events-none" />
+      <div className="fixed left-0 sm:-left-32 top-1/4 h-64 w-64 sm:h-96 sm:w-96 rounded-full bg-[#ffff00]/5 blur-[120px] pointer-events-none" />
+      <div className="fixed right-0 sm:-right-32 bottom-1/4 h-64 w-64 sm:h-96 sm:w-96 rounded-full bg-[#ff00ff]/5 blur-[120px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
         {/* Header */}
