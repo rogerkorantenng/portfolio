@@ -7,8 +7,8 @@ import { triggerXP, triggerAchievement } from "./xp-notification";
 const PAGE_XP: Record<string, { xp: number; reason: string }> = {
   "/": { xp: 10, reason: "Accessed main terminal" },
   "/skills": { xp: 25, reason: "Viewed skill modules" },
-  "/missions": { xp: 25, reason: "Accessed mission logs" },
-  "/access-log": { xp: 20, reason: "Read access logs" },
+  "/projects": { xp: 25, reason: "Viewed projects" },
+  "/experience": { xp: 20, reason: "Viewed experience" },
   "/trophies": { xp: 20, reason: "Viewed trophy cabinet" },
   "/connect": { xp: 30, reason: "Initiated connection" },
 };

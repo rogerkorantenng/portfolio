@@ -23,8 +23,8 @@ import { coreTechnologies } from "@/data/skills";
 
 const quickLinks = [
   { href: "/skills", label: "SKILL_MODULES", icon: Cpu, command: "./skills" },
-  { href: "/missions", label: "MISSIONS", icon: Shield, command: "./missions" },
-  { href: "/access-log", label: "ACCESS_LOG", icon: Database, command: "cat /log" },
+  { href: "/projects", label: "PROJECTS", icon: Shield, command: "./projects" },
+  { href: "/experience", label: "EXPERIENCE", icon: Database, command: "cat /log" },
   { href: "/trophies", label: "TROPHIES", icon: Brain, command: "./trophies" },
 ];
 
@@ -264,7 +264,7 @@ export default function HomePage() {
                 <span>RECENT_OPERATIONS</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-mono font-bold text-white">
-                COMPLETED <span className="text-[#00ffff]">MISSIONS</span>
+                COMPLETED <span className="text-[#00ffff]">PROJECTS</span>
               </h2>
             </motion.div>
 
@@ -329,8 +329,8 @@ export default function HomePage() {
                 className="border-[#00ffff]/50 text-[#00ffff] hover:bg-[#00ffff]/10 hover:border-[#00ffff] font-mono uppercase tracking-wider"
                 asChild
               >
-                <Link href="/missions">
-                  VIEW_ALL_MISSIONS
+                <Link href="/projects">
+                  VIEW_ALL_PROJECTS
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -360,7 +360,7 @@ export default function HomePage() {
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-zinc-400 font-mono text-sm mb-8">
                 Looking for a skilled operative to join your team?
-                I&apos;m always open to discussing new missions, creative challenges,
+                I&apos;m always open to discussing new projects, creative challenges,
                 or opportunities to make an impact.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">

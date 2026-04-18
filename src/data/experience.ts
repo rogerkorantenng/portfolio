@@ -3,8 +3,6 @@ export interface Experience {
   title: string;
   company: string;
   location: string;
-  startDate: string;
-  endDate: string;
   type: "full-time" | "contract" | "remote";
   categories: string[];
   responsibilities: {
@@ -15,22 +13,47 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    id: "waltergates",
+    title: "Senior Software Engineer",
+    company: "WalterGates Ghana Limited",
+    location: "Accra, Ghana",
+    type: "full-time",
+    categories: ["Backend", "Full-Stack", "Payments"],
+    responsibilities: [
+      {
+        area: "FalconPay — Payment Processing Platform",
+        bullets: [
+          "Engineered a payment processing system enabling seamless transactions across the Walter Gates ecosystem, integrated with ITC UniWallet gateway.",
+          "Built the Laravel API backend with Sanctum authentication, business registration workflows, and automated fee/commission calculations.",
+          "Implemented queue-based payment notifications and transaction processing via Supervisor workers.",
+        ],
+      },
+      {
+        area: "WG Commodities — Hire-Purchase Platform",
+        bullets: [
+          "Developed a full-stack hire-purchase platform with Next.js frontend and Laravel API, enabling customers to acquire products through installment payments.",
+          "Built a multi-role system (Admin, Agent, Customer, Supplier) with credit application workflows and tiered progression (Entry → Silver → Gold).",
+          "Implemented agent commission tracking, daily payment collection, and vendor payout calculations.",
+        ],
+      },
+      {
+        area: "ISDBMS — Informal Sector Database Management System",
+        bullets: [
+          "Built a purpose-designed system to digitize and structure records for informal sector operations, bridging traditional business practices with modern data management.",
+          "Developed the Next.js frontend (deployed via PM2) and Laravel API backend with Sanctum-based authentication.",
+          "Set up staging and production environments with Nginx reverse proxy, Certbot SSL, and Supervisor for background processing.",
+        ],
+      },
+    ],
+  },
+  {
     id: "college-league",
     title: "Lead Software Engineer",
     company: "College League App",
     location: "US (Remote)",
-    startDate: "Nov 2024",
-    endDate: "Present",
     type: "remote",
-    categories: ["Backend", "AI", "Leadership"],
+    categories: ["Backend", "API", "Leadership"],
     responsibilities: [
-      {
-        area: "Product Leadership",
-        bullets: [
-          "Acted as Product Lead and engineering team owner, ensuring tasks were properly scoped, prioritized, and delivered on time.",
-          "Led a team of 5 engineers to deliver an AI-powered Statement of Purpose Rewriter within 6 weeks, achieving 80% adoption in the first month of launch.",
-        ],
-      },
       {
         area: "Backend Development",
         bullets: [
@@ -55,12 +78,41 @@ export const experiences: Experience[] = [
     ],
   },
   {
+    id: "vb-it-consult",
+    title: "Software Engineer",
+    company: "VB IT Consult - Adesuapa Project",
+    location: "Remote",
+    type: "remote",
+    categories: ["Backend", "Full-Stack", "DevOps"],
+    responsibilities: [
+      {
+        area: "Multi-Tenant Application Development",
+        bullets: [
+          "Built and maintained a multi-tenant Laravel application serving multiple educational institutions with isolated data and customizable configurations.",
+          "Implemented bulk student import system via Excel file uploads, streamlining onboarding for schools.",
+        ],
+      },
+      {
+        area: "Notification & Background Processing",
+        bullets: [
+          "Developed SMS and email notification pipelines using Laravel queues, Horizon, and Supervisor for reliable background job processing.",
+          "Created a demo provisioning system that auto-generates institution trial accounts with temporary credentials.",
+        ],
+      },
+      {
+        area: "Server Deployment & Infrastructure",
+        bullets: [
+          "Managed server deployments on Linux (Ubuntu), including Nginx configuration, Supervisor process management, and storage/permission handling.",
+          "Built the frontend with Vite, handling production build optimization under resource-constrained environments.",
+        ],
+      },
+    ],
+  },
+  {
     id: "kofa",
     title: "Backend Engineer - API, Machine Learning & IoT",
     company: "Kofa Technologies",
     location: "Accra, Ghana",
-    startDate: "Oct 2023",
-    endDate: "Oct 2024",
     type: "full-time",
     categories: ["Backend", "IoT", "ML"],
     responsibilities: [
@@ -89,36 +141,17 @@ export const experiences: Experience[] = [
   },
   {
     id: "bluesky",
-    title: "Software Engineer - API and Testing",
+    title: "Software Engineer Intern",
     company: "Blue Sky Products Gh. Ltd.",
-    location: "Accra, Ghana",
-    startDate: "Apr 2022",
-    endDate: "Jun 2023",
+    location: "Nsawam, Ghana",
     type: "full-time",
-    categories: ["Frontend", "Testing"],
+    categories: ["Software Engineering"],
     responsibilities: [
       {
-        area: "Frontend System Management",
+        area: "Software Development",
         bullets: [
-          "Assisted in managing and maintaining the frontend systems, ensuring that web interfaces and user experiences are optimized for performance and reliability.",
-        ],
-      },
-      {
-        area: "UI/UX Issue Resolution",
-        bullets: [
-          "Troubleshot frontend-related technical issues, such as layout inconsistencies and responsive design challenges, and provided timely resolutions to ensure smooth user interactions.",
-        ],
-      },
-      {
-        area: "Component Installation and Configuration",
-        bullets: [
-          "Assisted in the installation and configuration of frontend libraries and frameworks, ensuring compatibility and optimal performance across different browsers and devices.",
-        ],
-      },
-      {
-        area: "Security and Data Integrity",
-        bullets: [
-          "Implemented frontend security measures, such as content security policies and input validation, to protect user data and ensure the integrity of web applications.",
+          "Contributed to developing and improving software features, supporting overall system reliability and user experience.",
+          "Identified issues, optimized functionality, and ensured code quality across assigned modules.",
         ],
       },
     ],

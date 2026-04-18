@@ -35,8 +35,8 @@ const socialLinks = [
 const footerLinks = [
   { href: "/", label: "HOME" },
   { href: "/skills", label: "SKILL_MODULES" },
-  { href: "/missions", label: "MISSIONS" },
-  { href: "/access-log", label: "ACCESS_LOG" },
+  { href: "/projects", label: "PROJECTS" },
+  { href: "/experience", label: "EXPERIENCE" },
   { href: "/trophies", label: "TROPHIES" },
   { href: "/connect", label: "CONNECT" },
 ];

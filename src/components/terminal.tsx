@@ -31,9 +31,9 @@ const COMMANDS: Record<string, Command> = {
         "╠══════════════════════════════════════════════════╣",
         "║  help      - Display this help menu              ║",
         "║  skills    - View skill modules                  ║",
-        "║  missions  - Access mission logs (projects)      ║",
+        "║  projects  - View projects                        ║",
         "║  stats     - Display operative statistics        ║",
-        "║  access    - View system access logs             ║",
+        "║  experience - View professional experience        ║",
         "║  trophies  - Show unlocked achievements          ║",
         "║  connect   - Establish secure connection         ║",
         "║  progress  - Show exploration progress           ║",
@@ -48,9 +48,9 @@ const COMMANDS: Record<string, Command> = {
     description: "Navigate to skills",
     action: () => ({ navigate: "/skills", output: ["> Accessing SKILL_MODULES..."] }),
   },
-  missions: {
-    description: "Navigate to projects",
-    action: () => ({ navigate: "/missions", output: ["> Loading MISSION_LOGS..."] }),
+  projects: {
+    description: "View projects",
+    action: () => ({ navigate: "/projects", output: ["> Loading PROJECTS..."] }),
   },
   stats: {
     description: "Display character stats",
@@ -60,7 +60,7 @@ const COMMANDS: Record<string, Command> = {
         "║      OPERATIVE STATISTICS             ║",
         "╠═══════════════════════════════════════╣",
         "║  NAME:  Roger Koranteng               ║",
-        "║  CLASS: Lead Software Engineer        ║",
+        "║  CLASS: Senior Software Engineer        ║",
         "║  LEVEL: 15                            ║",
         "║  XP:    3,450 / 5,000                 ║",
         "╠═══════════════════════════════════════╣",
@@ -73,9 +73,9 @@ const COMMANDS: Record<string, Command> = {
       ],
     }),
   },
-  access: {
-    description: "View access logs (experience)",
-    action: () => ({ navigate: "/access-log", output: ["> Retrieving ACCESS_LOG..."] }),
+  experience: {
+    description: "View professional experience",
+    action: () => ({ navigate: "/experience", output: ["> Loading EXPERIENCE..."] }),
   },
   trophies: {
     description: "Show achievements",
@@ -102,7 +102,7 @@ const COMMANDS: Record<string, Command> = {
         "  ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝",
         "",
         "  OPERATIVE: Roger Obeng Koranteng",
-        "  CLASS:     Lead Software Engineer",
+        "  CLASS:     Senior Software Engineer",
         "  LOCATION:  Accra, Ghana",
         "  STATUS:    ONLINE",
         "",
@@ -157,7 +157,7 @@ const COMMANDS: Record<string, Command> = {
         "",
         "  Nice try, hacker! 😄",
         "",
-        "  roger:x:1000:1000:Lead Software Engineer:/home/roger:/bin/code",
+        "  roger:x:1000:1000:Senior Software Engineer:/home/roger:/bin/code",
         "  backend:x:1001:1001:Laravel, Django, Node.js:/home/backend:/bin/api",
         "  aiml:x:1002:1002:TensorFlow, NLP, CV:/home/aiml:/bin/train",
         "  cloud:x:1003:1003:AWS, Azure, GCP:/home/cloud:/bin/deploy",
@@ -369,7 +369,7 @@ export function Terminal({ className, onCommandExecuted }: TerminalProps) {
   const quickCommands = [
     { cmd: "help", label: "HELP", color: "#00ffff" },
     { cmd: "skills", label: "SKILLS", color: "#39ff14" },
-    { cmd: "missions", label: "MISSIONS", color: "#ff00ff" },
+    { cmd: "projects", label: "PROJECTS", color: "#ff00ff" },
     { cmd: "stats", label: "STATS", color: "#ffff00" },
     { cmd: "connect", label: "CONNECT", color: "#00ffff" },
     { cmd: "whoami", label: "WHOAMI", color: "#ff00ff" },

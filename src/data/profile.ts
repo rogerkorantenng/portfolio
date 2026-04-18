@@ -1,6 +1,6 @@
 export const profile = {
   name: "Roger Obeng Koranteng",
-  title: "Lead Software Engineer",
+  title: "Senior Software Engineer",
   email: "Rogerkorantenng@gmail.com",
   phone: "+233547738808",
   location: "Accra, Ghana",
@@ -10,7 +10,7 @@ export const profile = {
     linkedin: "https://linkedin.com/in/rogerkorantenng",
   },
   summary:
-    "Lead Software Engineer with expertise in building scalable backend systems, AI-powered applications, and IoT solutions. Experienced in leading engineering teams, optimizing multi-tenant SaaS architectures, and delivering products that drive measurable impact. Passionate about leveraging technology to solve real-world problems, from climate monitoring to enterprise software.",
+    "Senior Software Engineer with expertise in building scalable backend systems, AI-powered applications, and IoT solutions. Experienced in leading engineering teams, optimizing multi-tenant SaaS architectures, and delivering products that drive measurable impact. Passionate about leveraging technology to solve real-world problems, from climate monitoring to enterprise software.",
   highlights: {
     yearsOfExperience: "3+",
     teamSize: "5 engineers led",

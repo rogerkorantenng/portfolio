@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils";
 const navLinks = [
   { href: "/", label: "HOME", command: "cd ~" },
   { href: "/skills", label: "SKILL_MODULES", command: "./skills" },
-  { href: "/missions", label: "MISSIONS", command: "./missions" },
-  { href: "/access-log", label: "ACCESS_LOG", command: "cat /var/log" },
+  { href: "/projects", label: "PROJECTS", command: "./projects" },
+  { href: "/experience", label: "EXPERIENCE", command: "cat /var/log" },
   { href: "/trophies", label: "TROPHIES", command: "./achievements" },
   { href: "/connect", label: "CONNECT", command: "ssh connect" },
 ];
